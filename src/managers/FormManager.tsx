@@ -5,8 +5,11 @@ interface Props {
   children: ReactNode;
 }
 
+/** Provide form state for JSON schema
+ */
+
 export default function FormManager({ children }: Props) {
-  const [values, setValues] = React.useState<any>({});
+  const [values, setValues] = React.useState<Record<string, string>>({});
 
   const handleSetValue = (id: string, value: string) => {
     setValues({

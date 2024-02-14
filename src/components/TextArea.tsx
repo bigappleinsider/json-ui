@@ -1,15 +1,26 @@
 import { isEmpty } from 'lodash';
 import styled, { css } from 'styled-components';
+import { useForm } from '../context/form';
+import { View } from '../types';
 
 interface Props {
-  data: any;
+  data: View;
 }
 
+/** Render styled textarea */
+
 export default function TextArea({ data }: Props) {
+  const { values, onSetValue } = useForm();
+
   return (
     <StyledTextArea $customStyle={data.style}>
-      <label>{data.data.label}</label>
-      <textarea />
+      {data?.data?.label != null && <label>{data?.data.label}</label>}
+      <textarea
+        onChange={(event) => {
+          onSetValue(data.id, event.target.value);
+        }}
+        value={values[data.id] ?? ''}
+      />
     </StyledTextArea>
   );
 }

@@ -1,15 +1,18 @@
 import React from 'react';
 import { isEmpty } from 'lodash';
 import styled, { css } from 'styled-components';
+import { View } from '../types';
 
 interface Props {
-  data: any;
+  data: View;
   children: React.ReactElement;
 }
 
+/** Render styled Link */
+
 export default function Link({ data, children }: Props) {
   return (
-    <StyledLink $customStyle={data.style} href={data.data.value}>
+    <StyledLink $customStyle={data.style} href={data?.data?.value}>
       {children}
     </StyledLink>
   );

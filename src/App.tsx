@@ -1,16 +1,30 @@
-import React from 'react';
+import styled from 'styled-components';
+
 import Preview from './components/Preview';
-import data from './data2.json';
+import data from './data.json';
 import FormManager from './managers/FormManager';
+import { View } from './types';
+
+/**
+ * Render Application with form preview of JSON schema
+ */
 
 function App() {
+  const views: View[] = data.views as View[];
+
   return (
-    <div className="App">
+    <Container>
       <FormManager>
-        <Preview data={data.views} />
+        <Preview data={views} />
       </FormManager>
-    </div>
+    </Container>
   );
 }
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+`;
 
 export default App;

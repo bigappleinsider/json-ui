@@ -1,27 +1,31 @@
 import { isEmpty } from 'lodash';
 import styled, { css } from 'styled-components';
 import { useForm } from '../context/form';
+import { View } from '../types';
 
 interface Props {
-  data: any;
+  data: View;
 }
+
+/** Render styled text fields */
 
 export default function TextField({ data }: Props) {
   const { values, onSetValue } = useForm();
+
   return (
     <StyledTextField $customStyle={data.style}>
       <div>
-        <label>{data.data.label}</label>
+        {data?.data?.label != null && <label>{data?.data.label}</label>}
         <input
           type="text"
-          placeholder={data.data.placeholder}
-          value={values[data.data.id] ?? data.data.value}
+          placeholder={data?.data?.placeholder ?? ''}
+          value={values[data.id] ?? ''}
           onChange={(event) => {
-            onSetValue(data.data.id, event.target.value);
+            onSetValue(data.id, event.target.value);
           }}
         />
       </div>
-      <p>{data.data.helperText}</p>
+      {data?.data?.helperText != null && <p>{data.data.helperText}</p>}
     </StyledTextField>
   );
 }

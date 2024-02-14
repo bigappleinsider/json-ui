@@ -1,21 +1,34 @@
 import { isEmpty } from 'lodash';
 import styled, { css } from 'styled-components';
+import { useForm } from '../context/form';
+import { View } from '../types';
 
 interface Props {
-  data: any;
+  data: View;
 }
 
+/** Render styled select */
+
 export default function Select({ data }: Props) {
+  const { values, onSetValue } = useForm();
+
   return (
     <StyledSelect $customStyle={data.style}>
-      <label>{data.data.label}</label>
-      <select>
-        {data.data.options.map((option: string, idx: number) => (
-          <option key={idx} value={option}>
-            {option}
-          </option>
-        ))}
-      </select>
+      {data?.data?.label != null && <label>{data?.data.label}</label>}
+      {data?.data?.options != null && (
+        <select
+          value={values[data.id] ?? ''}
+          onChange={(event) => {
+            onSetValue(data.id, event.target.value);
+          }}
+        >
+          {data?.data?.options.map((option: string, idx: number) => (
+            <option key={idx} value={option}>
+              {option}
+            </option>
+          ))}
+        </select>
+      )}
     </StyledSelect>
   );
 }

@@ -7,8 +7,18 @@ import Container from './Container';
 import TextField from './TextField';
 import Link from './Link';
 import Select from './Select';
+import { View } from '../types';
 
-export default function Preview({ data }: { data: any }) {
+interface Props {
+  data: View[];
+}
+
+/** Render preview for nested JSON schema
+ * use recursion to render nested components
+ * TODO: handle form submission
+ */
+
+export default function Preview({ data }: Props) {
   return (
     <div>
       {data.map((view: any, idx: number) => {

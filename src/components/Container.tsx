@@ -1,11 +1,14 @@
 import React from 'react';
 import { isEmpty } from 'lodash';
 import styled, { css } from 'styled-components';
+import { View } from '../types';
 
 interface Props {
-  data: any;
+  data: View;
   children: React.ReactElement;
 }
+
+/** Render styled container */
 
 export default function Container({ data, children }: Props) {
   return (

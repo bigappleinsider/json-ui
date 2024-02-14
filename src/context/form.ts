@@ -14,6 +14,15 @@ export const defaultValue: FormContextValue = {
   onSetValue: defaultMethodImplementation,
 };
 
+export const isSubmitDisabled = (
+  values: any,
+  requiredFields: string[] = [],
+) => {
+  return requiredFields.some((field) => {
+    return values[field] == null || values[field].length === 0;
+  });
+};
+
 export const FormContext = createContext<FormContextValue>(defaultValue);
 
 export const useForm = () => useContext(FormContext);

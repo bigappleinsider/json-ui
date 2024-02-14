@@ -1,32 +1,35 @@
 import { isEmpty } from 'lodash';
 import styled, { css } from 'styled-components';
+import { View } from '../types';
 
 interface Props {
-  data: any;
+  data: View;
 }
+
+/** Render styled Text */
 
 export default function CustomText({ data }: Props) {
-  return <StyledText style={data.style}>{data.data.value}</StyledText>;
+  return <StyledText $customStyle={data.style}>{data?.data?.value}</StyledText>;
 }
 
-const StyledText = styled.div<{ style: any }>`
-  ${(props) => ({ ...props.style.webStyle })}
+const StyledText = styled.div<{ $customStyle: any }>`
+  ${(props) => ({ ...props.$customStyle.webStyle })}
 
   ${(props) =>
-    !isEmpty(props.style.actions.onHover) &&
+    !isEmpty(props.$customStyle.actions.onHover) &&
     css`
       &:hover {
         ${(props: any) => ({
-          ...props.style.actions.onHover,
+          ...props.$customStyle.actions.onHover,
         })}
   `}
 
   ${(props) =>
-    !isEmpty(props.style.actions.onFocus) &&
+    !isEmpty(props.$customStyle.actions.onFocus) &&
     css`
       &:focus {
         ${(props: any) => ({
-          ...props.style.actions.onFocus,
+          ...props.$customStyle.actions.onFocus,
         })}
   `}
 `;
