@@ -255,6 +255,9 @@
                 "paddingBottom": "5px",
                 "boxSizing": "border-box"
               },
+              "& input:focus": {
+                "outline": "none"
+              },
               "& p": {
                 "fontWeight": "bold",
                 "fontSize": "14px"

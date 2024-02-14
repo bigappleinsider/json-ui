@@ -2,7 +2,9 @@
 
 ### Screenshots
 
-Screenshots can be found at screenshots folder
+![Screenshot 1](https://github.com/bigappleinsider/json-ui/blob/main/screenshots/ScreenShot01.png?raw=true)
+
+![Screenshot 2](https://github.com/bigappleinsider/json-ui/blob/main/screenshots/ScreenShot02.png?raw=true)
 
 Future improvements:
 
